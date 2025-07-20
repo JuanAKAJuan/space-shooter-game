@@ -1,0 +1,3 @@
+/home/juanix/Dev/Personal/space-shooter-game/build/CMakeFiles/space-shooter.dir
+/home/juanix/Dev/Personal/space-shooter-game/build/CMakeFiles/edit_cache.dir
+/home/juanix/Dev/Personal/space-shooter-game/build/CMakeFiles/rebuild_cache.dir

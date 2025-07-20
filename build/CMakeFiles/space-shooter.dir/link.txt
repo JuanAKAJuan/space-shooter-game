@@ -1,0 +1,1 @@
+/usr/bin/c++ "CMakeFiles/space-shooter.dir/main.cpp.o" -o space-shooter  /usr/lib64/libSDL3.so.0.2.16
