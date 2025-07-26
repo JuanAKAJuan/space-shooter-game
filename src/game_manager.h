@@ -1,11 +1,11 @@
 #pragma once
 
-#include "GameWindow.h"
+#include "renderer.h"
 
 class GameManager {
 public:
 	void run();
 
 private:
-	GameWindow window;
+	Renderer renderer;
 };

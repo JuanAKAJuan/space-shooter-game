@@ -1,13 +1,12 @@
 #pragma once
-#include "raylib.h"
 
-class GameWindow {
+class Renderer {
 public:
-	GameWindow();
+	Renderer();
 	void create_window();
-	void update_draw_frame(void);
-	void close_window();
 	bool should_close();
+	void draw();
+	void close_window();
 
 private:
 	static constexpr int SCREEN_WIDTH = 900;
