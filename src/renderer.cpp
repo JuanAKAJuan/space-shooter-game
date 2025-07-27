@@ -19,23 +19,23 @@ void Renderer::update_camera() {
 	float scaleY = static_cast<float>(GetScreenHeight()) / SCREEN_HEIGHT;
 	float scale = std::min(scaleX, scaleY);
 
-	camera.target = {SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f};
-	camera.offset = {GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f};
-	camera.rotation = 0.0f;
-	camera.zoom = scale;
+	m_camera.target = {SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f};
+	m_camera.offset = {GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f};
+	m_camera.rotation = 0.0f;
+	m_camera.zoom = scale;
 }
 
-void Renderer::draw() {
+void Renderer::draw(const Spaceship& spaceship) {
 	update_camera();
 
 	BeginDrawing();
 	{
-		Color background_color = {11, 11, 11, 255};
-		ClearBackground(background_color);
+		ClearBackground(BLACK);
 
-		BeginMode2D(camera);
+		BeginMode2D(m_camera);
 		{
-			DrawText("Game goes here guy.", SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2, 20, LIGHTGRAY);
+			DrawRectangle(static_cast<int>(spaceship.get_x()), static_cast<int>(spaceship.get_y()),
+						  static_cast<int>(spaceship.get_width()), static_cast<int>(spaceship.get_height()), WHITE);
 		}
 		EndMode2D();
 	}

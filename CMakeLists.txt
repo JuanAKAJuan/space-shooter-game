@@ -29,6 +29,6 @@ if(NOT raylib_FOUND) # If there's none, fetch and build raylib
     endif()
 endif()
 
-add_executable(${PROJECT_NAME} src/main.cpp src/game_manager.cpp src/renderer.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp src/game_manager.cpp src/renderer.cpp src/input_handler.cpp src/spaceship.cpp)
 #set(raylib_VERBOSE 1)
 target_link_libraries(${PROJECT_NAME} raylib)
