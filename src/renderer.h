@@ -1,8 +1,10 @@
 #pragma once
-#include "spaceship.h"
+
 #include <raylib.h>
 
-class Spaceship; // Forward declaration
+// Forward declaration
+class Spaceship;
+class EnemyManager;
 
 class Renderer {
 public:
@@ -12,7 +14,7 @@ public:
 	Renderer();
 	void create_window();
 	void update_camera();
-	void draw(const Spaceship& spaceship);
+	void draw(const Spaceship& spaceship, const EnemyManager& enemy_manager);
 	bool should_close();
 	void close_window();
 

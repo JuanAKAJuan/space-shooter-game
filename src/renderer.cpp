@@ -1,4 +1,6 @@
 #include "renderer.h"
+#include "enemy_manager.h"
+#include "spaceship.h"
 #include <algorithm>
 
 Renderer::Renderer() {}
@@ -25,7 +27,7 @@ void Renderer::update_camera() {
 	m_camera.zoom = scale;
 }
 
-void Renderer::draw(const Spaceship& spaceship) {
+void Renderer::draw(const Spaceship& spaceship, const EnemyManager& enemy_manager) {
 	update_camera();
 
 	BeginDrawing();
@@ -34,8 +36,17 @@ void Renderer::draw(const Spaceship& spaceship) {
 
 		BeginMode2D(m_camera);
 		{
+			// Draw spaceship
 			DrawRectangle(static_cast<int>(spaceship.get_x()), static_cast<int>(spaceship.get_y()),
 						  static_cast<int>(spaceship.get_width()), static_cast<int>(spaceship.get_height()), WHITE);
+
+			// Draw enemies
+			for (const Enemy& enemy : enemy_manager.get_enemies()) {
+				if (enemy.is_alive()) {
+					DrawRectangle(static_cast<int>(enemy.get_x()), static_cast<int>(enemy.get_y()),
+								  static_cast<int>(enemy.get_width()), static_cast<int>(enemy.get_height()), RED);
+				}
+			}
 		}
 		EndMode2D();
 	}
