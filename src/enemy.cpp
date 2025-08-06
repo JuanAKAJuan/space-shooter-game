@@ -1,5 +1,4 @@
 #include "enemy.h"
-#include "renderer.h"
 
 Enemy::Enemy(float x, float y) : m_x(x), m_y(y), m_width(30.0f), m_height(20.0f), m_alive(true) {}
 
