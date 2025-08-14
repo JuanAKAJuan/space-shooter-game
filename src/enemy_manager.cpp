@@ -3,19 +3,19 @@
 #include <algorithm>
 
 EnemyManager::EnemyManager()
-	: m_formation_speed_x(0.0f), m_formation_speed_y(0.0f), m_base_speed(50.0f), m_drop_distance(30.0f),
-	  m_moving_right(true) {
+	: m_formation_speed_x(0.0f), m_formation_speed_y(0.0f), m_base_speed(50.0f), m_moving_right(true),
+	  m_drop_distance(30.0f) {
 	create_formation();
 	m_formation_speed_x = m_base_speed;
 }
 
 void EnemyManager::create_formation() {
-	const int ROWS = 5;
-	const int COLS = 10;
-	const float ENEMY_SPACING_X = 100.0f;
-	const float ENEMY_SPACING_Y = 80.0f;
-	const float START_X = 100.0f;
-	const float START_Y = 50.0f;
+	const int ROWS = 5;					  ///< Number of enemy rows in the formation
+	const int COLS = 10;				  ///< Number of enemy columns in the formation
+	const float ENEMY_SPACING_X = 100.0f; ///< Horizontal spacing between enemies
+	const float ENEMY_SPACING_Y = 80.0f;  ///< Vertical spacing between enemies
+	const float START_X = 100.0f;		  ///< Starting X position for the formation
+	const float START_Y = 50.0f;		  ///< Starting Y position for the formation
 
 	m_enemies.clear();
 	m_enemies.reserve(ROWS * COLS);
@@ -30,15 +30,17 @@ void EnemyManager::create_formation() {
 }
 
 void EnemyManager::update(float delta_time) {
+	// Check if formation has reached screen edge and needs to change direction
 	if (should_change_direction()) {
 		change_direction();
 	}
 
+	// Update all enemies with current formation speeds
 	for (Enemy& enemy : m_enemies) {
 		enemy.update(delta_time, m_formation_speed_x, m_formation_speed_y);
 	}
 
-	// Reset vertical movement after applying it.
+	// Reset vertical movement after applying it (only used for dropping down)
 	m_formation_speed_y = 0.0f;
 }
 
