@@ -23,6 +23,16 @@ public:
 	void update(InputHandler::Direction direction, float delta_time);
 
 	/**
+	 * @brief Decreases the number of lives by 1
+	 * @return true if the player still has lives remaining, false if game over
+	 */
+	bool decrease_lives();
+
+	void reset_position();
+
+	bool is_alive();
+
+	/**
 	 * @brief Gets the current x-coordinate of the spaceship
 	 * @return Current x-coordinate position
 	 */
@@ -46,9 +56,16 @@ public:
 	 */
 	float get_height() const { return m_height; };
 
+	/**
+	 * @brief Gets the number of lives remaining
+	 * @return Current number lives
+	 */
+	int get_lives() const { return m_lives; };
+
 private:
 	float m_x, m_y;			 ///< Spaceship position coordinates
 	float m_width, m_height; ///< Spaceship dimensions in pixels
 	float m_speed;			 ///< Movement speed in pixels per second
 	float m_screen_width;	 ///< Screen width for boundary checking
+	int m_lives;			 ///< Number of lives remaining (default: 3)
 };

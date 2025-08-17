@@ -10,20 +10,20 @@ EnemyManager::EnemyManager()
 }
 
 void EnemyManager::create_formation() {
-	const int ROWS = 5;					  ///< Number of enemy rows in the formation
-	const int COLS = 10;				  ///< Number of enemy columns in the formation
-	const float ENEMY_SPACING_X = 100.0f; ///< Horizontal spacing between enemies
-	const float ENEMY_SPACING_Y = 80.0f;  ///< Vertical spacing between enemies
-	const float START_X = 100.0f;		  ///< Starting X position for the formation
-	const float START_Y = 50.0f;		  ///< Starting Y position for the formation
+	const int ROWS {5};					  ///< Number of enemy rows in the formation
+	const int COLS {10};				  ///< Number of enemy columns in the formation
+	const float ENEMY_SPACING_X {100.0f}; ///< Horizontal spacing between enemies
+	const float ENEMY_SPACING_Y {80.0f};  ///< Vertical spacing between enemies
+	const float START_X {100.0f};		  ///< Starting X position for the formation
+	const float START_Y {50.0f};		  ///< Starting Y position for the formation
 
 	m_enemies.clear();
 	m_enemies.reserve(ROWS * COLS);
 
-	for (int row = 0; row < ROWS; ++row) {
-		for (int col = 0; col < COLS; ++col) {
-			float x = START_X + (col * ENEMY_SPACING_X);
-			float y = START_Y + (row * ENEMY_SPACING_Y);
+	for (int row {0}; row < ROWS; ++row) {
+		for (int col {0}; col < COLS; ++col) {
+			float x {START_X + (col * ENEMY_SPACING_X)};
+			float y {START_Y + (row * ENEMY_SPACING_Y)};
 			m_enemies.emplace_back(x, y);
 		}
 	}
@@ -59,7 +59,7 @@ void EnemyManager::change_direction() {
 }
 
 float EnemyManager::get_leftmost_enemy_x() const {
-	float leftmost = Renderer::SCREEN_WIDTH;
+	float leftmost {Renderer::SCREEN_WIDTH};
 	for (const Enemy& enemy : m_enemies) {
 		if (enemy.is_alive() && enemy.get_x() < leftmost) {
 			leftmost = enemy.get_x();
@@ -69,7 +69,7 @@ float EnemyManager::get_leftmost_enemy_x() const {
 }
 
 float EnemyManager::get_rightmost_enemy_x() const {
-	float rightmost = 0.0f;
+	float rightmost {0.0f};
 	for (const Enemy& enemy : m_enemies) {
 		if (enemy.is_alive() && enemy.get_x() + enemy.get_width() > rightmost) {
 			rightmost = enemy.get_x() + enemy.get_width();

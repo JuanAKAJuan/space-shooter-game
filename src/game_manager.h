@@ -30,4 +30,23 @@ private:
 	InputHandler input_handler; ///< Processes user input and converts to game actions
 	Spaceship spaceship;		///< Player-controlled spaceship object
 	EnemyManager enemy_manager; ///< Manages enemy spawning, behavior, and lifecycle
+
+	/**
+	 * @brief Checks for collisions between the spaceship and enemies
+	 * @return true if collision detected, false otherwise
+	 */
+	bool check_collision_with_enemies();
+
+	/**
+	 * @brief Handles player death logic
+	 */
+	void handle_player_death();
+
+	/**
+	 * @brief Checks if two rectangles are colliding using AABB collision detection
+	 * @param x1, y1, w1, h1 First rectangle parameters
+	 * @param x2, y2, w2, h2 Second rectangle parameters
+	 * @return true if rectangles overlap, false otherwise
+	 */
+	bool rectangles_collide(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
 };
