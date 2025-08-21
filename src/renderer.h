@@ -54,5 +54,5 @@ public:
 private:
 	Camera2D m_camera; ///< 2D camera for rendering the game world
 
-	void draw_lives_ui(int lives);
+	void draw_lives_ui(int lives, int scale);
 };

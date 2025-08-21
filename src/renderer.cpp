@@ -50,7 +50,7 @@ void Renderer::draw(const Spaceship& spaceship, const EnemyManager& enemy_manage
 		}
 		EndMode2D();
 
-		draw_lives_ui(spaceship.get_lives());
+		draw_lives_ui(spaceship.get_lives(), m_camera.zoom);
 	}
 	EndDrawing();
 }
@@ -59,11 +59,11 @@ bool Renderer::should_close() { return WindowShouldClose(); }
 
 void Renderer::close_window() { CloseWindow(); }
 
-void Renderer::draw_lives_ui(int lives) {
-	const int UI_MARGIN {20};
-	const int SCALE_FACTOR {4};
+void Renderer::draw_lives_ui(int lives, int scale) {
+	const int UI_MARGIN {20 * scale};
+	const int SCALE_FACTOR {4 * scale};
 	const int HEART_WIDTH {8 * SCALE_FACTOR};
-	const int HEART_SPACING {HEART_WIDTH + 10};
+	const int HEART_SPACING {HEART_WIDTH + static_cast<int>(10 * scale)};
 
 	// clang-format off
     int heart_pattern[8][8] {
